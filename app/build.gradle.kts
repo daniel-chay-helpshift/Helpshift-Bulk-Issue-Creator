@@ -1,3 +1,5 @@
+apply(from = "installCreds.gradle") // Apply the credentials file
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -14,8 +16,14 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
+
+        buildConfigField("String", "HELPSHIFT_DOMAIN_NAME", "\"${project.extra["helpshiftDomainName"]}\"")
+        buildConfigField("String", "HELPSHIFT_PLATFORM_ID", "\"${project.extra["helpshiftPlatformId"]}\"")
+        buildConfigField("String", "HELPSHIFT_API_KEY", "\"${project.extra["helpshiftApiKey"]}\"")
+
+    }
+    buildFeatures.buildConfig = true
     buildTypes {
         release {
             isMinifyEnabled = false
