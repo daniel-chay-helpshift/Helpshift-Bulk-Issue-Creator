@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Construct API URL
                 // The general issue creation endpoint. Consult Helpshift docs if platform_id needs to be in URL.
-                String apiUrl = "https://api.helpshift.com/v1/" + DOMAIN_NAME + "/issues";
+                String apiUrl = "https://api.helpshift.com/v1/" + DOMAIN_NAME + "/" + BuildConfig.HELPSHIFT_PLATFORM_ID + "/issues/";
 
                 final Map<String, String> params = new HashMap<>();
                 params.put("message-body", "Automated Test Issue #" + issueNumber + " for minimal plan. Timestamp: " + System.currentTimeMillis());
